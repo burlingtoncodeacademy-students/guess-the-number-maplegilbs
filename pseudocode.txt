@@ -1,0 +1,27 @@
+
+
+1.  ASK user to play a game - store response as variable.  
+1a. Validate the response.  Make lowercase for use in conditional..
+1b. Check if PLAYGAME is 'y' OR 'n' if not ask again until response is 'y' or 'n'
+1c. Test the variable PLAYGAME (conditional) if 'y' start if 'n' exit.
+
+2.  Establish a range - ASK for a minimum store response as variable MIN
+2a.  Validate response - confirm TYPEOF is NUMBER if not ask until (LOOP) TYPEOF is a NUMBER
+2b.  ASK for a maximum store response as variable MAX
+2c.  Validate response - confirm TYPEOF is NUMBER if not ask until (LOOP) TYPEOF is a NUMBER
+
+3. ASK user to input a number in that range store as variable SECRETNUMBER
+3a. Validate response - if TYPEOF is not a Number OR number > max OR < min, ask again until (LOOP) conditions are met
+
+4. Make guess (call guessing function)
+
+5. (Now in guessing function) given parameters min and max, guess in the middle of the range (BINARY SEARCH)
+5a.  Declare variable GUESS as min + max / 2 rounded (down or up does not matter)
+5b. Return GUESS
+
+6. (Back in main function) ASK user if the number is the GUESS.  Store response ISCORRECT as variable.
+6a. Validate the response.  Make lowercase for use in conditional..
+6b. Check if  ISCORRECT 'y' OR 'n' if not ask again until response is 'y' or 'n'
+6c. If ISCORRECT is 'y' celebrate and exit the game
+6d. If ISCORRECT is 'n' ASK user if the number is higher or lower than GUESS;
+6e. If 
