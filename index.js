@@ -57,13 +57,10 @@ async function validateHOrL(question, hOrL) {
 }
 
 async function validateInputNum(question, num) {
-  //need to handle empty string
-  num = +num;
-  while (isNaN(num)) {
+  while (num==='' || isNaN(+num)) {
     num = await ask(`Sorry I needed the response to be a number \n ${question}`)
-    num = +num;
-  };
-  return num;
+  }
+  return +num;
 }
 
 
@@ -170,7 +167,7 @@ async function start(isInitialCall = false) {
       console.log(`You're no fun!  Goodbye`);
       process.exit()
     }
-  console.log(`\nGreat! Let's play a game where one of use makes up a number, and the other tries to guess it..`);
+  console.log(`\nGreat! Let's play a game where one of us makes up a number, and the other tries to guess it..`);
   console.log(`First let's establish a range.\n`);
   }
   else {
