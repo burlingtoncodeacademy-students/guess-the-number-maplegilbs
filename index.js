@@ -69,8 +69,9 @@ async function validateInputNum(question, num) {
 
 
 
-/*----Primary Game Function----*/
-//Human Player
+/*----Primary Game Functions----*/
+
+/*--Human Player--*/
 async function humanPlays(min, max) {
   let secretNumber = setSecretNum(min, max);
   console.log(`Okay I've picked a secret number, start guessing.`);
@@ -105,7 +106,9 @@ async function humanPlays(min, max) {
   }
 }
 
-//Computer player
+
+
+/*--Computer player--*/
 async function computerPlays(min, max) {
   console.log(`\nSo we have a range from ${min} to ${max}, please pick a number in that range.`);
   let secretNumberQuestion = `What is your secret number?\nI won't peek, I promise...\n`;
@@ -114,9 +117,7 @@ async function computerPlays(min, max) {
     console.log(`Your number does not fall within the maximum and minimum.  Please choose again.`)
     secretNumber = await validateInputNum(secretNumberQuestion, await ask(secretNumberQuestion));
   }
-  console.log('You entered: ' + secretNumber + '. \nTime for me to guess.');
-
-
+  console.log('\nYou entered: ' + secretNumber + '.\n \nTime for me to guess.');
   //Accept guesses and deal with responses
   let guess = computerGuess(min, max);
   let guessCheck = `Is the number ${guess}? `;
@@ -136,7 +137,7 @@ async function computerPlays(min, max) {
       max = guess - 1;
     }
     if (min > max) {
-      console.log(`You cheater!  You said it was higher than ${min} and lower than ${max + 1}.  I quit!`);
+      console.log(`You CHEATER!  You said it was higher than ${min-1} and lower than ${max + 1}.  I quit!`);
       process.exit()
     }
     guess = computerGuess(min, max);
@@ -187,13 +188,13 @@ async function start(isInitialCall = false) {
   }
 
 //Run game for human player or computer player depending on the choice
-  let playerQuestion = `Would you like to be the one to guess? Y or N ` 
+  let playerQuestion = `\nWould you like to be the one to guess? Y or N ` 
   let isHumanPlayer = await validateYOrN(playerQuestion, await ask(playerQuestion));
   if (isHumanPlayer) {
     humanPlays(min, max);
   }
   else {
-    console.log(`Okay I'll be the one to guess.`);
+    console.log(`\nOkay I'll be the one to guess.`);
     computerPlays(min, max)
   }
 };
